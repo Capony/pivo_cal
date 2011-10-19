@@ -1,0 +1,20 @@
+<div class="wrapper">
+<div class="content">
+<h1 class="headline">Tracker</h1>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @tracker.name %>
+</p>
+
+<p>
+  <b>Pivotal token:</b>
+  <%= @tracker.pivotal_token %>
+</p>
+
+
+<%= link_to 'Edit', edit_tracker_path(@tracker) %> |
+<%= link_to 'Back', trackers_path %>
+</div>
+</div>

@@ -1,0 +1,27 @@
+<div class="wrapper">
+<div class="content">
+<h1 class="headline">Project</h1>
+<p id="notice"><%= notice %></p>
+
+<div class="project_box">
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Pivotal-Tracker ID:</b>
+  <%= @project.project_id %>
+</p>
+
+<p>
+  <b>Tracker:</b>
+  <%= @project.tracker_id %>
+</p>
+</div>
+
+
+<%= link_to 'Edit', edit_tracker_project_path(params[:tracker_id], @project.id) %> |
+<%= link_to 'Back', tracker_projects_path(params[:tracker_id]) %>
+</div>
+</div>

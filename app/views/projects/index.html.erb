@@ -1,0 +1,42 @@
+<div class="wrapper">
+<div class="content">
+<h1 class="headline">Listing Projects</h1>
+<div id="subtitle">for <%= @tracker.name %></div>
+
+<b>tracked Projects</b>
+
+<% @projects.each do |project| %>
+	<div class="project_box">
+   	<b><%= project.name %></b>
+    <span style="font-size:10px">
+			<%= link_to 'Show', tracker_project_path(params[:tracker_id], project.id) %>
+    	<%= link_to 'Edit', edit_tracker_project_path(params[:tracker_id], project.id) %>
+    	<%= link_to 'Destroy', tracker_project_path(params[:tracker_id], project.id), confirm: 'Are you sure?', method: :delete %>
+		</span>
+		<br />
+		<a onclick="ShowHide('<%= project.id %>')" href="javascript:;">iCal URL</a>
+		<div class="mid" id="<%= project.id %>" style="DISPLAY: none">
+			<input type="text" readonly="readonly" name="cantedit" size="60" value="<%= File.join(root_url, tracker_project_path(:tracker_id => @tracker.id, :id => project.id), "/ical.json") %>" />
+		</div>
+	</div>
+<% end %>
+
+
+<hr />
+<b>available Projects</b>
+<% @pivo_projects.each do |pivo_project| %>
+	<div class="box_for_new_projects">
+	<%= form_for(:project, :url => tracker_projects_path(params[:tracker_id])) do |f| %>
+		<%= pivo_project.name %>
+		<%= f.hidden_field :name, :value => pivo_project.name %>
+		<%= f.hidden_field :project_id, :value => pivo_project.id %>
+		<div class="button"><%= f.submit 'add Project' %></div>
+	<% end %>
+	</div>
+<% end %>
+<br />
+
+<%= link_to 'New Project', new_tracker_project_path(params[:tracker_id]) %>
+<%= link_to 'Back', trackers_path %>
+</div>
+</div>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  project_id: 1
+  tracker_id: 1
+
+two:
+  name: MyString
+  project_id: 1
+  tracker_id: 1
