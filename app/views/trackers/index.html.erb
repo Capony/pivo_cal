@@ -5,9 +5,11 @@
 
 <% @trackers.each do |tracker| %>
 	<div class="tracker_box">
-    <%= tracker.name %>
+    <b><%= tracker.name %></b>
     <%= link_to 'Edit', edit_tracker_path(tracker) %>
-		<%= link_to 'show Projects', tracker_projects_path(tracker.id) %>
+		<div class="projects_link">
+			<%= link_to 'show Projects', tracker_projects_path(tracker.id) %>
+		</div>
 	</div>
 <% end %>
 <br />

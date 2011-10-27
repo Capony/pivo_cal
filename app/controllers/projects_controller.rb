@@ -6,12 +6,19 @@ class ProjectsController < ApplicationController
   
   def index
     @projects = @tracker.projects
-    @pivo_projects = @tracker.all_projects_from_pivotal
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @projects }
+    
+    begin
+      @pivo_projects = @tracker.all_projects_from_pivotal
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @projects }
+      end
+    rescue Exception => e
+      @tracker.errors.add 'pivotal_token', e.message
+      redirect_to edit_tracker_path(@tracker), notice: 'Tracker Token is invalid'
     end
+
+    
   end
 
   # GET /projects/1

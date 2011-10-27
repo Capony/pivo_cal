@@ -1,8 +1,11 @@
 <div class="wrapper">
 <div class="content">
+<p id="notice"><%= notice %></p>
 <h1 class="headline">Editing tracker</h1>
 
+<div class="tracker_box">
 <%= render 'form' %>
+</div>
 
 <%= link_to 'Show', @tracker %> |
 <%= link_to 'Back', trackers_path %>

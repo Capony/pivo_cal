@@ -9,8 +9,13 @@ gem 'sqlite3'
 gem 'tracker-ical'
 gem 'pivotal-tracker'
 
-gem 'rspec'
-
+group :development, :test do
+    gem 'rspec'
+    gem 'rspec-rails'
+    gem 'autotest'
+    gem 'autotest-standalone'
+    gem 'autotest-growl'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.

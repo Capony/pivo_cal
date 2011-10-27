@@ -2,7 +2,9 @@
 <div class="content">
 <h1 class="headline">Editing projects</h1>
 
+<div class="project_box">
 <%= render 'form' %>
+</div>
 
 <%= link_to 'Show', tracker_project_path(params[:tracker_id]) %> |
 <%= link_to 'Back', tracker_projects_path(params[:tracker_id]) %>
