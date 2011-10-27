@@ -5,8 +5,7 @@ class Tracker < ActiveRecord::Base
   
   def all_projects_from_pivotal
     @projects = []
-    PivotalTracker::Client.token = self.pivotal_token
-    @all_projects = PivotalTracker::Project.all
+    @all_projects = pivotal_projects(self)
     
     @all_projects.each do |project|
       unless self.projects.map(&:project_id).include?(project.id)
@@ -15,4 +14,12 @@ class Tracker < ActiveRecord::Base
     end
     return @projects
   end
+  
+private
+
+  def pivotal_projects(tracker)
+    PivotalTracker::Client.token = tracker.pivotal_token
+    PivotalTracker::Project.all
+  end
+  
 end

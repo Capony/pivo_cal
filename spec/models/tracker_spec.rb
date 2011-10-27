@@ -17,6 +17,9 @@ describe Tracker do
   end
   
   it "can get projects from pivotal" do
-    
+    @tracker = mock_model(Tracker) 
+    #@tracker.all_projects_from_pivotal()
+    @tracker.should respond_to(:all_projects_from_pivotal)      
   end
+  
 end
